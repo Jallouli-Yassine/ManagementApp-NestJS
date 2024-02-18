@@ -19,8 +19,6 @@ export class BaseService<T> {
         return this.model.find();
     }
 
-    
-
     async findOne(id: string): Promise<T> {
         return this.model.findById(id);
     }

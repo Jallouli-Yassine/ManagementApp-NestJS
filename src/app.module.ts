@@ -1,10 +1,18 @@
-import { UserModule } from './modules/user.module';
+import { UserModule } from './modules/user/user.module';
 import { Module } from '@nestjs/common';
+import { TeamModule } from './modules/team-module/team.module';
+import { TaskModule } from './modules/task/task.module';
+import { ProjectModule } from './modules/project/project.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 
 @Module({
   imports: [
-        UserModule, ],
+    MongooseModule.forRoot('mongodb://127.0.0.1/project-managment'),
+    UserModule,
+    TeamModule,
+    TaskModule,
+    ProjectModule],
   controllers: [],
   providers: [],
 })
