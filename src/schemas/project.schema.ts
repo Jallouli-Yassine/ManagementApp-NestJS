@@ -1,20 +1,23 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
+import { Prop, Schema,SchemaFactory } from "@nestjs/mongoose";
+import { Team } from "./team.schema";
+import { Task } from "./task.schema";
 @Schema()
-export class Project{
+export class project{
     
-    @Prop({ required: true })
-    title: string;
-
-    @Prop({ required: true })
-    description: string;
-
-    @Prop({ default: Date.now })
-    startDate: Date;
-
     @Prop()
-    endtDate: Date;
-
+    projectName: string;
+    @Prop()
+    projectId: number;
+    @Prop()
+    projectDescription: string;
+    @Prop()
+    startDate: Date;
+    @Prop()
+    endDate: Date;
+    @Prop()
+    TeamMembers: Team;
+    @Prop()
+    tasks: Task;
 }
-
-export const ProjectSchema = SchemaFactory.createForClass(Project);
+export const projectSchema=SchemaFactory.createForClass(project)
