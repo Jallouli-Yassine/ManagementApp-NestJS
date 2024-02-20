@@ -19,8 +19,10 @@ export class UserService extends BaseService<User>{
         super(userModel);
     }
 
-    async createUser(user: CreateUserDto)   {
-        return super.create(user);
+    async createUser({ password,...restOfAttributes }: CreateUserDto)   {
+        const hashedPassword = await bcrypt.hash(password, 12);
+        const newUser = new this.userModel({ password:hashedPassword, ...restOfAttributes});
+        return newUser.save();
     }
 
     getAllUsers() {
