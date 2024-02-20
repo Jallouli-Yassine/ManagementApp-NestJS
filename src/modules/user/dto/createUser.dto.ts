@@ -1,5 +1,5 @@
 import { Type } from "class-transformer";
-import { IsBoolean, IsEmail, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
+import { IsBoolean, IsDate, IsEmail, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
 
 export class SettingsDto {
     @IsOptional()
@@ -32,13 +32,7 @@ export class CreateUserDto {
     @IsNotEmpty()
     password: string;
 
-    @IsNotEmpty()
-    @IsNumber()
-    age: number;
 
-    @IsOptional()
-    @IsString()
-    avatarUrl?: string;
 
     @IsOptional()
     @ValidateNested()
