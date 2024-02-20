@@ -6,6 +6,7 @@ import { Body, Controller, Delete, Get, HttpException, Param, Patch, Post, UsePi
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/createUser.dto';
 import { UpdateUserDto } from './dto/updateUserDto';
+import { AuthDto } from './dto/Auth.dto';
 
 @Controller('user')
 export class UserController {
@@ -17,6 +18,12 @@ export class UserController {
         return this.usersService.createUser(createdUserDto);
     }
 
+    @Post('login')
+    //@UseGuards(LocalAuthGuard)
+    login(@Body() loginAuthDto: AuthDto) {
+        console.log(loginAuthDto);
+        return this.usersService.login(loginAuthDto);
+    }
 
     @Get()
     getAllUsers() {
